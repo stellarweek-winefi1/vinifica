@@ -55,6 +55,16 @@ export default function MercadoPage() {
   return (
     <main className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+        {/* Page Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-black">
+            Vinos Disponibles
+          </h1>
+          <p className="text-xl text-black max-w-3xl mx-auto">
+            Explora nuestra selección de vinos premium disponibles para inversión
+          </p>
+        </div>
+
         {/* Search Bar */}
         <div className="mb-12">
           <div className="relative max-w-2xl mx-auto">

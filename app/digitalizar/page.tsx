@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Wine, Upload, DollarSign, CheckCircle } from "lucide-react";
+import { useState, useRef } from "react";
+import { Wine, Upload, DollarSign, CheckCircle, X, File, Image as ImageIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +32,12 @@ const steps = [
   },
 ];
 
+interface UploadedFile {
+  id: string;
+  file: File;
+  preview?: string;
+}
+
 export default function DigitalizarPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -42,12 +48,75 @@ export default function DigitalizarPage() {
     bottleCount: "",
     pricePerBottle: "",
   });
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileSelect = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+
+    const newFiles: UploadedFile[] = Array.from(files).map((file) => {
+      const id = `${Date.now()}-${Math.random()}`;
+      const uploadedFile: UploadedFile = { id, file };
+
+      // Create preview for images
+      if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setUploadedFiles((prev) =>
+            prev.map((f) =>
+              f.id === id ? { ...f, preview: reader.result as string } : f
+            )
+          );
+        };
+        reader.readAsDataURL(file);
+      }
+
+      return uploadedFile;
+    });
+
+    setUploadedFiles((prev) => [...prev, ...newFiles]);
+    
+    // Reset input to allow selecting the same file again
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const handleRemoveFile = (id: string) => {
+    setUploadedFiles((prev) => {
+      const fileToRemove = prev.find((f) => f.id === id);
+      if (fileToRemove?.preview) {
+        URL.revokeObjectURL(fileToRemove.preview);
+      }
+      return prev.filter((f) => f.id !== id);
+    });
+  };
+
+  const formatFileSize = (bytes: number): string => {
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + " " + sizes[i];
+  };
+
+  const getFileIcon = (file: File) => {
+    if (file.type.startsWith("image/")) {
+      return ImageIcon;
+    }
+    return File;
   };
 
   return (
@@ -252,15 +321,95 @@ export default function DigitalizarPage() {
           {currentStep === 2 && (
             <div className="space-y-6">
               <h2 className="text-2xl font-semibold mb-6 text-black">Documentación</h2>
+              
+              {/* Hidden file input */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                multiple
+                accept="image/*,.pdf,.doc,.docx"
+                onChange={handleFileChange}
+                className="hidden"
+                aria-label="Seleccionar archivos"
+              />
+
+              {/* Upload area */}
               <div className="text-center py-12">
                 <Upload className="w-16 h-16 text-black mx-auto mb-4" />
                 <p className="text-black mb-4">
                   Sube certificados de autenticidad, fotos de las botellas y cualquier documentación relevante
                 </p>
-                <button className="px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                <button
+                  onClick={handleFileSelect}
+                  className="px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+                >
                   Seleccionar Archivos
                 </button>
+                <p className="text-xs text-gray-600 mt-2">
+                  Formatos aceptados: Imágenes (JPG, PNG), PDF, DOC, DOCX
+                </p>
               </div>
+
+              {/* Uploaded files list */}
+              {uploadedFiles.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-black">
+                    Archivos Subidos ({uploadedFiles.length})
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {uploadedFiles.map((uploadedFile) => {
+                      const Icon = getFileIcon(uploadedFile.file);
+                      const isImage = uploadedFile.file.type.startsWith("image/");
+
+                      return (
+                        <motion.div
+                          key={uploadedFile.id}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="bg-gray-50 border-2 border-black rounded-lg p-4 relative group"
+                        >
+                          {/* Remove button */}
+                          <button
+                            onClick={() => handleRemoveFile(uploadedFile.id)}
+                            className="absolute top-2 right-2 p-1 bg-black text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-800"
+                            aria-label={`Eliminar ${uploadedFile.file.name}`}
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+
+                          {/* Image preview or file icon */}
+                          {isImage && uploadedFile.preview ? (
+                            <div className="mb-3">
+                              <img
+                                src={uploadedFile.preview}
+                                alt={uploadedFile.file.name}
+                                className="w-full h-32 object-cover rounded-lg border border-black"
+                              />
+                            </div>
+                          ) : (
+                            <div className="mb-3 flex items-center justify-center h-32 bg-white rounded-lg border border-black">
+                              <Icon className="w-12 h-12 text-black" />
+                            </div>
+                          )}
+
+                          {/* File info */}
+                          <div className="space-y-1">
+                            <p className="font-semibold text-black text-sm truncate" title={uploadedFile.file.name}>
+                              {uploadedFile.file.name}
+                            </p>
+                            <p className="text-xs text-gray-600">
+                              {formatFileSize(uploadedFile.file.size)}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              {uploadedFile.file.type || "Tipo desconocido"}
+                            </p>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

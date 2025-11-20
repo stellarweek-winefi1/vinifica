@@ -1,6 +1,6 @@
 "use client";
 
-import { Wine, TrendingUp, Zap, Shield, Users } from "lucide-react";
+import { Wine, TrendingUp, Zap, Shield, Users, ArrowLeftRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const features = [
@@ -33,6 +33,12 @@ const features = [
     title: "Para Todos",
     description:
       "Diseñado para ser fácil de usar, sin necesidad de experiencia técnica",
+  },
+  {
+    icon: ArrowLeftRight,
+    title: "Liquidez Total",
+    description:
+      "Vende tus activos digitales en cualquier momento a través del mercado secundario",
   },
 ];
 
