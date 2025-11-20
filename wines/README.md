@@ -1,95 +1,105 @@
-# VineFi - Wine Investment Platform
+# 🍷 VineFi – Invertí en Vino Premium de Forma Segura, Clara y Accesible
 
-A modern web application for investing in premium wines built with Next.js, TypeScript, and Tailwind CSS.
+VineFi es una plataforma que permite digitalizar lotes de vino de inversión de Argentina y Chile, facilitando que bodegas y personas puedan participar en el mercado del vino premium sin fricciones, sin intermediarios innecesarios y con total transparencia.
 
-## Features
+## 1. Resumen
 
-- 🍷 **Landing Page**: Hero section with key statistics and value propositions
-- 📈 **Marketplace**: Browse and invest in premium wines from Chile, Argentina, and USA
-- 💼 **Portfolio**: Track your wine investments and returns
-- 🔄 **Tokenization**: Digitalize your wine collection backed by Stellar blockchain
-- ⚡ **Fast Transactions**: 3-5 second settlement times
-- 🎨 **Responsive Design**: Optimized for all screen sizes
-- ♿ **Accessible**: WCAG 2.2 AA compliant
+El vino de inversión históricamente ofrece retornos atractivos, pero ha sido un mercado cerrado: exige tickets altos, poca visibilidad en precios y prácticamente nula liquidez para entrar o salir en el momento adecuado.
 
-## Tech Stack
+VineFi cambia ese modelo:
 
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Icons**: Lucide React
-- **Animations**: Framer Motion
-- **Blockchain**: Stellar (mentioned in copy)
+**Para bodegas:**
+Permite convertir lotes de vino en unidades digitales fraccionadas, obteniendo capital de forma simple, directa y sin depender de bancos o distribuidores.
 
-## Getting Started
+**Para inversores:**
+Permite comprar fracciones digitales de lotes de vino premium desde montos accesibles (10–20 USD), con seguimiento en tiempo real del inventario y respaldo físico verificado en bodegas certificadas.
 
-### Prerequisites
+La tecnología utilizada permite movimientos rápidos, seguros, de bajo costo y con trazabilidad, pero sin necesidad de entender términos técnicos: todo está diseñado para la experiencia del usuario.
 
-- Node.js 18+ installed
-- npm or yarn package manager
+## 2. Problema
 
-### Installation
+### Para bodegas
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+- Acceso al capital dominado por bancos y mayoristas.
+- Cobros lentos y márgenes reducidos por intermediación.
+- Dificultad para construir comunidad e interés global en sus mejores añadas.
 
-2. Run the development server:
-   ```bash
-   npm run dev
-   ```
+### Para inversores
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
+- Montos de entrada demasiado altos (miles de dólares).
+- Falta de transparencia en precios, comisiones y estado del inventario.
+- Sin liquidez: el vino puede estar años guardado sin posibilidad de venderlo.
 
-### Build for Production
+## 3. Propuesta de Valor
 
-```bash
-npm run build
-npm start
-```
+### 3.1. Capas de producto
 
-## Project Structure
+VineFi se organiza en tres niveles de inversión, siempre centrados en vino investment-grade:
 
-```
-vinefi/
-├── app/
-│   ├── page.tsx              # Landing page
-│   ├── mercado/
-│   │   └── page.tsx          # Marketplace
-│   ├── portafolio/
-│   │   └── page.tsx          # Portfolio
-│   ├── digitalizar/
-│   │   └── page.tsx          # Tokenization form
-│   ├── layout.tsx            # Root layout
-│   └── globals.css           # Global styles
-├── components/
-│   ├── Navigation.tsx        # Main navigation
-│   ├── HeroSection.tsx       # Landing hero
-│   ├── HowItWorksSection.tsx # Features section
-│   ├── CTASection.tsx        # Call-to-action
-│   └── WineCard.tsx          # Wine product card
-├── lib/
-│   └── utils.ts              # Utility functions
-└── public/                   # Static assets
-```
+**Iconic Drops**
 
-## Pages
+- Ediciones ultra exclusivas: etiquetas icónicas, colaboraciones especiales, botellas de culto.
+- Fraccionamiento digital desde 10–20 USD por participación.
 
-- **/** - Landing page with hero, features, and CTA
-- **/mercado** - Browse available wines for investment
-- **/portafolio** - View your wine holdings and performance
-- **/digitalizar** - Multi-step form to tokenize wine collections
+**Premium Investment-Grade**
 
-## Accessibility
+- Vinos reconocidos con historial claro de revalorización: Malbecs premium, Bordeaux, Burgundy, Napa, Rioja top.
+- Participación digital desde 20–50 USD.
 
-This project follows WCAG 2.2 AA guidelines:
-- Semantic HTML elements
-- Proper ARIA labels and roles
-- Keyboard navigation support
-- Minimum color contrast ratios
-- Screen reader friendly
+**Access Collections**
 
-## License
+- Lotes curados de bodegas destacadas, con precios más accesibles pero siempre con tesis de inversión.
+- Ingreso desde 10–20 USD.
 
-This project is for demonstration purposes.
+Esta estructura permite abrir el mercado sin sacrificar calidad: vino de inversión real, con acceso democrático mediante fracciones digitales.
+
+### 3.2. Para bodegas
+
+- Convertir inventario almacenado en capital inmediato mediante la digitalización de lotes.
+- Acceso directo a una comunidad global de entusiastas del vino.
+- Onboarding simple, estilo "subir un producto a un marketplace".
+
+### 3.3. Para inversores
+
+- Acceso a vino de inversión real, custodiado y asegurado.
+- Entradas desde montos accesibles.
+- Transparencia total en precios, disponibilidad, auditorías y estado del inventario.
+- Facilidad para comprar y vender fracciones digitales según la demanda del mercado.
+
+## 4. Por qué ahora
+
+- El vino de inversión ha crecido como activo alternativo en todo el mundo.
+- La digitalización de activos reales permite acceso global, fraccionamiento y trazabilidad sin complejidad.
+- Las nuevas generaciones buscan exposición a activos tangibles sin procesos financieros lentos o caros.
+- Bodegas de Argentina y Chile están buscando nuevas fuentes de capital para expandirse sin endeudarse.
+
+## 5. Cómo funciona
+
+### Para bodegas
+
+#### Onboarding y verificación
+
+- Registro simple de la bodega.
+- Verificación de identidad de la empresa (KYB/KYC).
+- Acuerdo de custodia y publicación de lotes.
+
+#### Definición de lotes de vino
+
+- Información técnica: denominación, añada, volumen, puntuaciones, conservación.
+- Selección del tipo de colección (Iconic, Premium, Access).
+- Precio objetivo y condiciones de inversión.
+
+#### Digitalización del lote
+
+- El lote se convierte en unidades digitales fraccionadas.
+- Cada unidad representa un porcentaje real del inventario respaldado.
+
+#### Publicación y venta
+
+- Los inversores pueden adquirir fracciones digitales en pocos clics.
+- Pago simple, directo y seguro.
+
+#### Custodia y reportes
+
+- El vino permanece almacenado en bodegas certificadas.
+- Auditorías, reportes y estado del inventario siempre visibles.
