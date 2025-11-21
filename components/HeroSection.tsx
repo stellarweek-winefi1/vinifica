@@ -132,7 +132,7 @@ export default function HeroSection() {
           {[
             { value: "100%", label: "Confiable" },
             { value: "24/7", label: "Disponible" },
-            { value: "Rápido", sublabel: "y Simple" },
+            { value: "Todo el proceso", label: "en minutos" },
             { value: "QR", label: "Inteligente" },
           ].map((stat, index) => (
             <motion.div
