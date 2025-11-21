@@ -303,7 +303,6 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
 - `POST /api/eventos` - Registrar evento de trazabilidad
 - `GET /api/eventos/[loteId]` - Obtener eventos de un lote
 - `GET /api/qr/[code]` - Verificar QR y obtener información del lote
-- `POST /api/transferencias` - Transferir ownership de un lote
 
 ### Smart Contracts (Soroban)
 - **Traceability Contract**: 
@@ -329,7 +328,7 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
   - Validación de roles
 
 - **File Storage**: 
-  - Documentos de certificación (Supabase Storage, AWS S3, o IPFS)
+  - Documentos de certificación (Supabase Storage)
   - Imágenes de lotes y botellas
 
 ### Architecture Diagram
