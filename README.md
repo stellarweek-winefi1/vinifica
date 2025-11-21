@@ -116,7 +116,6 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
 - Implementación de pagos reales con USDC utilizando Stellar
 - Integración con wallets (Freighter, WalletConnect)
 - Procesamiento de transacciones en blockchain
-- Transferencia de ownership tras la compra
 
 ### 3.2 Why Stellar?
 
@@ -129,7 +128,6 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
 - **Soroban Smart Contracts**: Para lógica compleja como:
   - Validación de roles (bodega, distribuidor, importador)
   - Registro de eventos de trazabilidad
-  - Transferencias verificadas entre actores
   - Garantía de inmutabilidad de datos
 - **Asset Issuance**: Creación de Wine Traceability Tokens (WTT) representando lotes
 - **Transparencia verificable**: Cualquiera puede auditar los eventos del lote
@@ -140,7 +138,6 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
 - ✅ **Soroban Smart Contracts**: Para lógica de trazabilidad (Traceability Contract)
   - Crear lote (WTT)
   - Registrar eventos
-  - Transferencias verificadas
   - Validación de roles
 - ✅ **Asset Issuance**: Creación de Wine Traceability Tokens (WTT)
 - ✅ **Stellar SDK**: Integración frontend/backend con la red
@@ -229,7 +226,6 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
 **What the user will be able to do (Fase 2):**
 - Los clientes podrán comprar lotes certificados directamente en USDC usando Stellar
 - Integración con wallets (Freighter, WalletConnect) para procesar pagos
-- Transferencia de ownership del lote tras la compra exitosa
 - Procesamiento de transacciones en blockchain de Stellar
 - Registro inmutable de la compra en blockchain
 
@@ -308,7 +304,6 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
 - **Traceability Contract**: 
   - Crear lote (WTT)
   - Registrar eventos de trazabilidad
-  - Transferencias verificadas entre actores
   - Validación de roles (bodega, distribuidor, importador)
   - Garantía de inmutabilidad de datos
 
@@ -324,7 +319,6 @@ Vinifica es una plataforma para digitalizar los vinos que permite a los dueños 
 - **Blockchain**: Stellar Network
   - Wine Traceability Tokens (WTT) representando lotes
   - Eventos de trazabilidad registrados en cadena
-  - Transferencias de ownership
   - Validación de roles
 
 - **File Storage**: 
@@ -403,7 +397,6 @@ Los siguientes criterios se implementarán después del hackathon:
 
 - [ ] **Implementación de pagos reales con USDC**: Integración completa con Stellar para procesar pagos en USDC
 - [ ] **Integración con wallets**: Soporte para Freighter, WalletConnect y otros wallets compatibles con Stellar
-- [ ] **Transferencia de ownership**: El ownership del lote se transfiere automáticamente al comprador tras el pago exitoso
 - [ ] **Registro inmutable de compras**: Todas las compras quedan registradas en blockchain de Stellar
 - [ ] **Procesamiento de transacciones**: Manejo completo de transacciones, errores y confirmaciones en blockchain
 
